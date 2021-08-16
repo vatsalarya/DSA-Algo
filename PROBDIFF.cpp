@@ -32,5 +32,31 @@
 using namespace std;
 
 int main(){
-    
+    int t, different;
+    int difficulties[4];
+    cin >> t;
+    while(t--){
+        different = 0;
+        for(int i=0; i<4; i++){
+            cin >> difficulties[i];
+            int j;
+            for(j=0; j<i; j++){
+                if(difficulties[i] == difficulties[j])
+                   break; 
+            }
+            if(j == i)
+                different++;
+        }
+        if(different >= 3)
+            cout<<(different+1)/2<<endl;
+        else if(different == 2 ){
+            sort(difficulties, difficulties + 4);
+            if(difficulties[0]==difficulties[1] && difficulties[2]==difficulties[3])
+                cout << 2 << endl;
+            else
+                cout << 1 << endl;
+        }
+        else
+            cout<<different/2<<endl;
+    }
 }
